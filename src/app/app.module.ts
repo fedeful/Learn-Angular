@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component' 
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { LeaderService } from './services/leader.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   ],
   providers: [
     DishService,
-    PromotionService
+    PromotionService,
+    LeaderService
   ],
   bootstrap: [AppComponent]
 })
