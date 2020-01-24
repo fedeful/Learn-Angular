@@ -55,11 +55,7 @@
 
 
 
-  <div fxFlex>
-    <h2>Corporate Leadership</h2>
-  </div>
-
-  <div *ngIf="leaders">
+  <div fxFlex *ngIf="leaders">
     <h2>Corporate Leadership</h2>
     <mat-list>
         <mat-list-item *ngFor="let leader of leaders"> 
