@@ -25,6 +25,7 @@
     </mat-card>
   </div>
 
+
   <div fxFlex="40" *ngIf="dish">
     <h2>Comments</h2>
     <mat-list>
@@ -34,5 +35,8 @@
             <p mat-line>--{{comment.author}} {{comment.date | date: 'mediumDate'}}</p>
         </mat-list-item>
     </mat-list>
+  </div>
+  <div [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 </div>

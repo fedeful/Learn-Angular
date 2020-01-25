@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -65,6 +66,7 @@ import { LoginComponent } from './login/login.component';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     MatDialogModule,
     MatFormFieldModule,
     MatCheckboxModule,
