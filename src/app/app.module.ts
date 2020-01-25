@@ -39,6 +39,7 @@ import { ContactComponent } from './contact/contact.component'
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LeaderService } from './services/leader.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { LeaderService } from './services/leader.service';
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,9 @@ import { LeaderService } from './services/leader.service';
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   providers: [
     DishService,
