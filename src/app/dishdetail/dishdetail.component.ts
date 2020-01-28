@@ -24,6 +24,7 @@ export class DishdetailComponent implements OnInit {
     prev: string;
     next: string;
     dish: Dish;
+    errMsg: string;
     comment: Comment;
     commentForm: FormGroup;
     
