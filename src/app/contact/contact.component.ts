@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animations'
+import { flyInOut,expand } from '../animations/app.animations'
+import { FeedbackService } from "../services/feedback.service";
+
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +14,8 @@ import { flyInOut } from '../animations/app.animations'
     'style': 'display: block;'
   },
   animations:[
-    flyInOut()
+    flyInOut(),
+    expand()
   ]
 })
 export class ContactComponent implements OnInit {
@@ -20,13 +23,20 @@ export class ContactComponent implements OnInit {
 
   feedbackForm: FormGroup;
   feedback: Feedback;
+  feedbackCopy: Feedback;
+  feedbackErrMess: string;
+  isLoading: boolean;
+  isPreviewActive: boolean;
   contactType = ContactType;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+    private feedbackService: FeedbackService) { 
     this.createForm();
   }
 
   ngOnInit() {
+    this.isLoading = false;
+    this.isPreviewActive = false;
   }
 
   formErrors = {
@@ -74,8 +84,9 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -85,6 +96,24 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+    console.log('invio');
+    this.feedbackService.submitFeedback(this.feedback).subscribe
+    (
+      feedback =>{
+        console.log("set");
+        this.feedback = feedback; 
+        this.feedbackCopy = feedback;
+        this.isLoading = false;
+        this.isPreviewActive = true;
+        setTimeout(() => this.isPreviewActive= false, 5000);
+      },
+      errMess => {
+        this.isLoading = false;
+        this.feedback = null; 
+        this.feedbackCopy = null;
+        this.feedbackErrMess = <any>errMess;
+      }
+    );
     this.feedbackFormDirective.resetForm();
   }
 

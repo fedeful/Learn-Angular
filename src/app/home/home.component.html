@@ -39,6 +39,10 @@
     </p>
   </mat-card-content>
 </mat-card>
+<div fxFlex *ngIf="promotionErrMess">
+  <h2>Error</h2>
+  <h4>{{promotionErrMess}}</h4>
+</div>
 
 <mat-card *ngIf="leader" fxFlex [@expand]>
     <mat-card-header>
@@ -52,6 +56,9 @@
       <p>{{leader.description}}
       </p>
     </mat-card-content>
-  </mat-card>
-
+</mat-card>
+<div fxFlex *ngIf="leaderErrMess">
+  <h2>Error</h2>
+  <h4>{{leaderErrMess}}</h4>
+</div>
 </div>
